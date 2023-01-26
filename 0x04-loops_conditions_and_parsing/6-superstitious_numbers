@@ -3,6 +3,7 @@
 #   "bad luck from China" for the 4th iteration
 #   "bad luck from Japan" for the 9th iteration
 #   "bad luck from Italy" for the 17th loop iteration
+
 i=1
 while [ $i -le 20 ]
 do

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Tell a story based on the contents of the `/etc/passwd` file
+
 while IFS= read -r line
 do
     username=$(echo "$line" | cut -f 1 -d ':')

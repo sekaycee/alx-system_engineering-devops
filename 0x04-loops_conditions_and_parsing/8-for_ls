@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Display the contents of the current directory in list format.
+# Display the contents of the current directory in list format
 #   Only display the part of the name after the first dash
+
 for i in *
 do
     echo "$i" | cut -f2 -d '-'
