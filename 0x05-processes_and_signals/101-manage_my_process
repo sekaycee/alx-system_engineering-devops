@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Manage a Daemon
 
-. /lib/lsb/init-functions
 PIDFILE=/var/run/my_process.pid
 
 start() {
