@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Manage a Daemon
-
+# shellcheck source=/lib/lsb/init-functions
+. /lib/lsb/init-functions
 PIDFILE=/var/run/my_process.pid
 
 start() {
