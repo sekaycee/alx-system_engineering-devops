@@ -2,7 +2,7 @@
 Project completed during **Fullstack Software Engineering** program at **ALX**. It aims to learn about how to build a regular expression.
 
 ## Technologies
-* Scripts written in Bash
+* Scripts written in Ruby
 * Tested on Ubuntu
 
 ## Files
