@@ -4,7 +4,7 @@ Project completed during **Fullstack Software Engineering** program at **ALX**. 
 ## Technologies
 * Scripts written in Bash
 * Tested on Ubuntu 20.04 LTS
-* Puppet 3.8
+* Puppet 5.0
 
 ## Files
 

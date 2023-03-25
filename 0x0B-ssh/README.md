@@ -4,7 +4,7 @@ Project completed during **Fullstack Software Engineering** program at **ALX**. 
 ## Technologies
 * Scripts written in Bash
 * Tested on Ubuntu 20.04 LTS
-* Puppet 3.8
+* Puppet 5.0
 
 ## Files
 
@@ -12,5 +12,5 @@ Project completed during **Fullstack Software Engineering** program at **ALX**. 
 | -------- | ----------- |
 | `0-use_a_private_key` | Use `ssh` to connect to a server using a private key previously generated |
 | `1-create_ssh_key_pair` | Create an RSA key pair |
-| `2-ssh_config` | SSH client configuration using a private key and refusing to authenticate using a password |
+| `2-ssh_config` | Configure SSH client using a private key and refuse authentication via password |
 | `100-puppet_ssh_config.pp` | Set up the client SSH configuration file to connect to a server without typing a password |
