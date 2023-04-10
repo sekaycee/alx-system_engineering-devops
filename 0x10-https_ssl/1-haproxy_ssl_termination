@@ -7,6 +7,8 @@ global
         user haproxy
         group haproxy
         daemon
+        maxconn 2048
+        tune.ssl.default-dh-param 2048
 
         # Default SSL material locations
         ca-base /etc/ssl/certs
@@ -22,10 +24,11 @@ defaults
         mode    http
         option  httplog
         option  dontlognull
-        option  forwardfor
         timeout connect 5000
         timeout client  50000
         timeout server  50000
+        option forwardfor
+        option http-server-close
         errorfile 400 /etc/haproxy/errors/400.http
         errorfile 403 /etc/haproxy/errors/403.http
         errorfile 408 /etc/haproxy/errors/408.http
@@ -36,12 +39,19 @@ defaults
 
 frontend http
         bind *:80
+        mode http
+        default_backend web-backend
+
+frontend web-http
+        bind *:80
         http-request set-header X-Forwarded-Proto http
         default_backend web-backend
 
-frontend www-https
+frontend web-https
         bind *:443 ssl crt /etc/haproxy/ssl/www.kelechi.tech.pem
         http-request set-header X-Forwarded-Proto https
+        acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+        use_backend letsencrypt-backend if letsencrypt-acl
         default_backend web-backend
 
 backend web-backend
@@ -49,3 +59,6 @@ backend web-backend
         redirect scheme https if !{ ssl_fc }
         server 132339-web-01 54.90.40.0:80 check
         server 132339-web-02 54.90.23.41:80 check
+
+backend letsencrypt-backend
+        server letsencrypt 127.0.0.1:54321
