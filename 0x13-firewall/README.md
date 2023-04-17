@@ -1,6 +1,6 @@
 # Firewall
 
-Project completed during **Fullstack Software Engineering** programm at **ALX**. It aims to learn about firewalls, types of firewalls, firewall setup, config and debugging.
+Project completed during **Fullstack Software Engineering** program at **ALX**. It aims to learn about firewalls, types of firewalls, firewall setup, config and debugging.
 
 ## Tools
 
