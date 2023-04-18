@@ -9,3 +9,5 @@ CREATE TABLE IF NOT EXISTS nexus6 (
 INSERT INTO nexus6 (name) VALUES ('Marvy');
 INSERT INTO nexus6 (name) VALUES ('Caleb');
 INSERT INTO nexus6 (name) VALUES ('Chioma');
+ GRANT SELECT ON tyrell_corp.nexus6 TO 'holberton_user'@'localhost';
+ FLUSH PRIVILEGES;
