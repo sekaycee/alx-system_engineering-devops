@@ -2,5 +2,5 @@
 -- +with the host name set to %
 -- +and the password alx-123qwe
 CREATE USER 'replica_user'@'%' IDENTIFIED BY 'alx-123qwe';
-GRANT ALL PRIVILEGES ON * . * TO 'replica_user'@'%';
-FLUSH PRIVILEGES;
+ GRANT REPLICATION SLAVE ON * . * TO 'replica_user'@'%';
+ FLUSH PRIVILEGES;

@@ -2,5 +2,5 @@
 -- +with the host name set to localhost
 -- +and the password projectcorrection280hbtn
 CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
-GRANT ALL PRIVILEGES ON * . * TO 'holberton_user'@'localhost';
-FLUSH PRIVILEGES;
+ GRANT REPLICATION CLIENT ON * . * TO 'holberton_user'@'localhost';
+ FLUSH PRIVILEGES;
