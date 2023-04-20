@@ -8,8 +8,9 @@ Project completed during **Fullstack Software Engineering** program at **ALX**. 
 * SQL commands are written and run by MySQL
 * Tested on Ubuntu 20.04 LTS
 
-## Tasks.. Files and Deecription
-
+## Tasks.. Files and Description
+| Task | File | Description |
+| ---- | ---- | ----------- |
 | 0. Install MySQL | `0-install_mysql` | Get MySQL installed on both my `web-01` and `web-02` servers |
 | 1. Let us in! | `1-create_holberton_user.sql` | Create a MySQL user named `holberton_user` on both `web-01` and `web-02` with the host name set to `localhost` and the password `projectcorrection280hbtn` |
 | 2. If only you could see what I've seen with your eyes | `2-create_db_table.sql` | Create a database named `tyrell_corp` and create a table named `nexus6` and add at least one entry to it |
