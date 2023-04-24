@@ -10,8 +10,8 @@ if __name__ == '__main__':
     user = requests.get(url + 'users/{}'.format(userid)).json()
     name = user.get('username')
     todos = requests.get(url + 'todos?userId={}'.format(userid)).json()
-    c_tasks = ['task': task.get('title'), 'completed': task.get('completed'),
-               'username': name} for todo in todos]
+    c_tasks = [{'task': task.get('title'), 'completed': task.get('completed'),
+                'username': name} for todo in todos]
 
-    with open('{}.json'.format(userid), mode='w') as emp_file:
+    with open(userid + '.json', mode='w') as emp_file:
         json.dump({userid: c_tasks}, emp_file)

@@ -10,6 +10,6 @@ if __name__ == '__main__':
     c_tasks = [todo for todo in todos if todo.get('completed') is True]
 
     print('Employee {} is done with tasks'.format(user.get('name')), end='')
-    print('({}/{}):'.format(len(c_tasks, len(todos)))
+    print('({}/{}):'.format(len(c_tasks, len(todos))))
     for task in c_tasks:
         print('\t {}'.format(task.get('title')))
