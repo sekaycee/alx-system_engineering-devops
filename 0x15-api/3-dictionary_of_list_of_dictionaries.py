@@ -11,7 +11,7 @@ if __name__ == '__main__':
     for user in users:
         name = user.get('username')
         userid = user.get('id')
-        todos = requests.get(url + 'todos?userId={}'.format(userid)).json()
+        todos = requests.get(url + 'todos?userId={}' + userid).json()
         c_tasks = [{'username': name, 'task': todo.get('title'),
                     'completed': todo.get('completed')} for todo in todos]
         tasks_dump[userid] = c_tasks
