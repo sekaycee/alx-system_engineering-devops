@@ -7,9 +7,9 @@ import sys
 if __name__ == '__main__':
     url = 'https://jsonplaceholder.typicode.com/'
     userid = sys.argv[1]
-    user = requests.get(url + 'users/{}'.format(userid)).json()
+    user = requests.get(url + 'users/' + userid).json()
     name = user.get('username')
-    todos = requests.get(url + 'todos?userId={}'.format(userid)).json()
+    todos = requests.get(url + 'todos?userId=' + userid).json()
     c_tasks = [[userid, name, todo.get('completed'), todo.get('title')]
                for todo in todos]
 
