@@ -10,7 +10,7 @@ if __name__ == '__main__':
     user = requests.get(url + 'users/{}'.format(userid)).json()
     name = user.get('username')
     todos = requests.get(url + 'todos?userId={}'.format(userid)).json()
-    c_tasks = [{'task': task.get('title'), 'completed': task.get('completed'),
+    c_tasks = [{'task': todo.get('title'), 'completed': todo.get('completed'),
                 'username': name} for todo in todos]
 
     with open(userid + '.json', mode='w') as emp_file:
