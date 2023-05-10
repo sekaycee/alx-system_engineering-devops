@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Query Reddit API and print top ten hot posts of a subreddit"""
 import re
-import sys
 import requests
 
 
@@ -55,7 +54,7 @@ def count_words(subreddit, word_list):
     words.reverse()
     if len(words) != 0:
         for item in words:
-            if item[1] is not 0:
+            if item[1] != 0:
                 print("{}: {}".format(item[0], item[1]))
     else:
         print("")
