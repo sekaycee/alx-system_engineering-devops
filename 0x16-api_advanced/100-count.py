@@ -1,60 +1,72 @@
 #!/usr/bin/python3
-"""Query Reddit API and print top ten hot posts of a subreddit"""
+"""
+Function that queries the Reddit API and prints
+the top ten hot posts of a subreddit
+"""
 import re
 import requests
+import sys
 
 
-def add_title(a_dict, hot_posts):
-    """ Add titles to a list """
+def add_title(dictionary, hot_posts):
+    """ Adds item into a list """
     if len(hot_posts) == 0:
         return
 
     title = hot_posts[0]['data']['title'].split()
     for word in title:
-        for key in a_dict.keys():
+        for key in dictionary.keys():
             c = re.compile("^{}$".format(key), re.I)
             if c.findall(word):
-                a_dict[key] += 1
+                dictionary[key] += 1
     hot_posts.pop(0)
-    add_title(a_dict, hot_posts)
+    add_title(dictionary, hot_posts)
 
 
-def recurse(subreddit, a_dict, after=None):
-    """ Query to Reddit API """
+def recurse(subreddit, dictionary, after=None):
+    """ Queries to Reddit API """
+    u_agent = 'Mozilla/5.0'
     headers = {
-        'User-Agent': 'Mozilla/5.0'
+        'User-Agent': u_agent
     }
+
     params = {
         'after': after
     }
+
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    res = requests.get(url, headers=headers, params=params,
+    res = requests.get(url,
+                       headers=headers,
+                       params=params,
                        allow_redirects=False)
+
     if res.status_code != 200:
         return None
 
-    body = res.json()
-    hot_posts = body['data']['children']
-    add_title(a_dict, hot_posts)
-    after = body['data']['after']
+    dic = res.json()
+    hot_posts = dic['data']['children']
+    add_title(dictionary, hot_posts)
+    after = dic['data']['after']
     if not after:
         return
-    recurse(subreddit, a_dict, after=after)
+    recurse(subreddit, dictionary, after=after)
 
 
 def count_words(subreddit, word_list):
-    """ Wrap recurse function """
-    a_dict = {}
+    """ Init function """
+    dictionary = {}
 
     for word in word_list:
-        a_dict[word] = 0
+        dictionary[word] = 0
 
-    recurse(subreddit, a_dict)
-    words = sorted(a_dict.items(), key=lambda kv: kv[1])
-    words.reverse()
-    if len(words) != 0:
-        for item in words:
-            if item[1] != 0:
+    recurse(subreddit, dictionary)
+
+    l = sorted(dictionary.items(), key=lambda kv: kv[1])
+    l.reverse()
+
+    if len(l) != 0:
+        for item in l:
+            if item[1] is not 0:
                 print("{}: {}".format(item[0], item[1]))
     else:
         print("")
