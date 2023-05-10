@@ -50,9 +50,10 @@ def count_words(subreddit, word_list):
         a_dict[word] = 0
 
     recurse(subreddit, a_dict)
-    l = sorted(a_dict.items(), key=lambda kv: kv[1]).reverse()
-    if len(l) != 0:
-        for item in l:
+    words = sorted(a_dict.items(), key=lambda kv: kv[1])
+    words.reverse()
+    if len(words) != 0:
+        for item in words:
             if item[1] is not 0:
                 print("{}: {}".format(item[0], item[1]))
     else:
