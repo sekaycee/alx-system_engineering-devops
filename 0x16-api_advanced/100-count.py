@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Query Reddit API and print top ten hot posts of a subreddit"""
 import re
+import sys
 import requests
 
 
