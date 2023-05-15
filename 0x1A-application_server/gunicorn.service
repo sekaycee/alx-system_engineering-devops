@@ -1,0 +1,50 @@
+[Unit]
+Description=Gunicorn instance to serve AirBnB_clone_v4
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+# Group=www-data
+WorkingDirectory=/home/ubuntu/AirBnB_clone_v4
+Environment="PATH=/home/ubuntu/AirBnB_clone_v4/web_dynamic/.venv/bin"
+ExecStart=/home/ubuntu/AirBnB_clone_v4/web_dynamic/.venv/bin/gunicorn -w 3 -b 127.0.0.1:5003 wsgi:app
+
+[loggers]
+keys=airbnb-error, airbnb-access
+
+[handlers]
+keys=error_file, access_file
+
+[formatters]
+keys=access
+
+[logger_airbnb-error]
+level=INFO
+handlers=error_file
+propagate=1
+qualname=airbnb-error
+
+[logger_airbnb-access]
+level=INFO
+handlers=access_file
+propagate=0
+qualname=airbnb-access
+
+[handler_error_file]
+class=logging.FileHandler
+formatter=generic
+args=('/tmp/airbnb-error.log',)
+
+[handler_access_file]
+class=logging.FileHandler
+formatter=access
+args=('/tmp/airbnb-access.log',)
+
+
+[formatter_access]
+format=%(message)s
+class=logging.Formatter
+
+[Install]
+WantedBy=multi-user.target
